@@ -1,0 +1,36 @@
+package:
+  id: djvulibre
+  name: djvulibre
+  version: 3.5.27.1
+  kind: lib
+  description: |
+    djvulibre.
+
+base:
+  id: org.deepin.base
+  version: 20.5.0
+
+source:
+  kind: git
+  url: https://github.com/deepin-community/djvulibre.git
+  version: uos
+  commit: 9c0ffdf5db8f0d31f588c2ecca9c4a43b83cd7af
+
+  patch:
+  - 0001-djvulibre-fedora-Patch0-djvulibre-3.5.22-cdefs.patch.patch
+  - 0002-djvulibre-fedora-Patch6-djvulibre-3.5.27-export-file.patch
+  - 0003-djvulibre-fedora-Patch8-djvulibre-3.5.27-check-image.patch
+  - 0004-djvulibre-fedora-Patch9-djvulibre-3.5.27-interger-ov.patch
+  - 0005-djvulibre-fedora-Patch10-djvulibre-3.5.27-check-inpu.patch
+  - 0006-djvulibre-fedora-Patch11-djvulibre-3.5.27-djvuport-s.patch
+  - 0007-djvulibre-fedora-Patch12-djvulibre-3.5.27-unsigned-s.patch
+variables:
+  extra_args: |
+    --enable-static \
+    --enable-shared
+
+build:
+  kind: autotools
+  manual:
+    configure: |
+      ./autogen.sh ${conf_args} ${extra_args} 
