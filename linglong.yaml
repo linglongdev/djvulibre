@@ -33,4 +33,5 @@ build:
   kind: autotools
   manual:
     configure: |
+      update-alternatives --auto automake
       ./autogen.sh ${conf_args} ${extra_args} 
